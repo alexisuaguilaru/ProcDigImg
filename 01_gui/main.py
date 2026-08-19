@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
 from pathlib import Path
+from typing import Callable
 
 from PIL import Image, ImageOps, ImageTk
 
@@ -26,6 +27,11 @@ for row in range(num_rows):
         frame.grid(row=row, column=column, pady=5, sticky="nsew")
         frames.append(frame)
 
+def add_button(frame: tk.Frame, text: str, command: Callable) -> tk.Button:
+    button = tk.Button(frame, text=text, width=20, command=command)
+    button.pack(side="top")
+    return button
+
 ## Botón para cargar/seleccionar una imagen
 file_path: Path | str | None = None
 gray_image: Image.Image | None = None
@@ -49,6 +55,8 @@ def open_image() -> None:
         gray_image = color_image.convert("L")
         
         insert_image(color_image, frames[2])
+
+        add_button(frames[1], "Guardar", save_image)
         insert_image(gray_image, frames[3])
 
 def insert_image(pil_image: Image.Image, frame: tk.Frame) -> None:
@@ -63,8 +71,7 @@ def insert_image(pil_image: Image.Image, frame: tk.Frame) -> None:
     image_label.pack(side="top")
     image_label.image = image # Referencia adicional para evitar que el garbage collector elimine la imagen antes de mostrarla en la GUI
 
-button_open = tk.Button(frames[0], text="Abrir", width=20, command=open_image)
-button_open.pack(side="top")
+button_open = add_button(frames[0], "Abrir", open_image)
 
 ## Botón para guardar la imagen en escala de grises
 def save_image() -> None:
@@ -80,9 +87,6 @@ def save_image() -> None:
         save_file_path = Path(save_file_path)
 
         gray_image.save(save_file_path)
-
-button_save = tk.Button(frames[1], text="Guardar", width=20, command=save_image)
-button_save.pack(side="top")
 
 if __name__ == "__main__":
     root.mainloop()
