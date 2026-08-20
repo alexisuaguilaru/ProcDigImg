@@ -16,6 +16,13 @@ cd ProcDigImg/
 uv sync
 ```
 
+En caso de estar en un ambiente virtual basado en conda, para instalar las dependencias requeridas para la ejecución de las diferentes prácticas emplea:
+```bash
+pip install -r requirements.txt
+```
+
+Cada carpeta que representa una práctica o proyecto contiene un README a modo de reporte el cual contiene las instrucciones de uso específicamente para esa práctica.
+
 ## Autor, Afiliación y Contacto
 Alexis Aguilar [Estudiante de Licenciatura en "Tecnologías para la Información en Ciencias" en la Universidad Nacional Autónoma de México [UNAM](https://www.unam.mx/)]: alexis.uaguilaru@gmail.com
 
