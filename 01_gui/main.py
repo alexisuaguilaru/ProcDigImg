@@ -45,6 +45,7 @@ def open_image() -> None:
     global file_path
     global gray_image
 
+    ## Abrir cuadro de dialogo para buscar una imagen
     file_path = filedialog.askopenfilename(
         title = "Seleccione una imagen para convertirla a escala de grises",
         initialdir = "~/downloads",
@@ -58,7 +59,7 @@ def open_image() -> None:
         color_image = Image.open(file_path)
         color_image = ImageOps.exif_transpose(color_image) # Preservar la orientación original de la imagen usando los metadatos
 
-        ## Eliminar widgets o botones mostrados previamente
+        ## Eliminar widgets o botones mostrados previamente, en caso de seleccionar otra imagen
         if gray_image:
             list(map(delete_children_widgets, frames[1:]))
 
@@ -75,6 +76,7 @@ def insert_image(pil_image: Image.Image, frame: tk.Frame) -> None:
     image = pil_image.copy()
     image.thumbnail((frm_width,fmr_height))
 
+    ## Inserción de la imagen en la GUI ajustada a los widgets/contenedores
     image = ImageTk.PhotoImage(image)
     image_label = tk.Label(frame, image=image, justify="center")
     image_label.pack(side="top")
@@ -85,6 +87,7 @@ button_open = add_button(frames[0], "Abrir", open_image)
 ## Botón para guardar la imagen en escala de grises
 def save_image() -> None:
     if file_path and gray_image:
+        ## Abrir cuadro de dialogo para guardar la imagen en escala de grises
         extension = file_path.suffix[1:]
         save_file_path = filedialog.asksaveasfilename(
             title = "Guardar imagen a escala de grises.",
