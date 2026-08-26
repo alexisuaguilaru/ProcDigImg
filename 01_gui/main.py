@@ -16,7 +16,7 @@ root.grid_columnconfigure((0, 1), weight=1)
 root.grid_rowconfigure(0, weight=0)
 root.grid_rowconfigure(1, weight=1)
 
-## Creación de placeholders en la GUI
+## Creación de placeholders/contenedores en la GUI
 num_columns = 2
 num_rows = 2
 frames: list[tk.Frame] = []
@@ -29,11 +29,23 @@ for row in range(num_rows):
 
 ## Definición de utilidades para crear y destruir widgets 
 def add_button(frame: tk.Frame, text: str, command: Callable) -> tk.Button:
+    """
+    Función para añadir un botón en la parte superior de 
+    un contenedor (`frame`) con un cierto texto y para que 
+    ejecute un comando.
+
+    Devuelve el botón añadido al frame.
+    """
     button = tk.Button(frame, text=text, width=20, command=command)
     button.pack(side="top")
     return button
 
 def delete_children_widgets(frame: tk.Frame) -> None:
+    """
+    Función para eliminar los elementos o 
+    widgets contenidos en un frame con el 
+    fin de resetearlo.
+    """
     for widget in frame.winfo_children():
         widget.destroy()
 
@@ -42,6 +54,19 @@ file_path: Path | str | None = None
 gray_image: Image.Image | None = None
 
 def open_image() -> None:
+    """
+    Función para seleccionar y cargar una imagen a 
+    la GUI. Primero abre un ventana para buscar 
+    y seleccionar la imagen del usuario, posteriormente 
+    se carga y se transforma a escala de grises, este 
+    proceso de realiza con PIL. Finalmente, se inserta la 
+    imagen en la GUI y se añade el botón para guardar la 
+    versión en escala de grises.
+
+    En caso de se haya cargado previamente una imagen, lo 
+    primero que se realiza es un reset en cada uno de 
+    los contenedores.
+    """
     global file_path
     global gray_image
 
@@ -70,6 +95,17 @@ def open_image() -> None:
         insert_image(gray_image, frames[3])
 
 def insert_image(pil_image: Image.Image, frame: tk.Frame) -> None:
+    """
+    Función para insertar una imagen en un contenedor (`frame`), 
+    en la que primero se ajusta al tamaño máximo del mismo para 
+    último convertirla a una imagen en el formato que espera 
+    tkinter.
+
+    Un detalle técnico importante es que se le suma uno al 
+    número del contador de referencias de la imagen que se inserta 
+    para evitar que sea eliminada por el GB después de ejecutar 
+    la función.
+    """
     ## Reescalamiento de la imagen para que ocupe todo el widget
     frm_width = frame.winfo_width()
     fmr_height = frame.winfo_height()
@@ -86,6 +122,16 @@ button_open = add_button(frames[0], "Abrir", open_image)
 
 ## Botón para guardar la imagen en escala de grises
 def save_image() -> None:
+    """
+    Función para guardar la imagen en escala de grises al hacer 
+    click en el correspondiente botón. Abre una ventana para 
+    confirmar el nombre de la imagen y la ruta en la que se 
+    va a guardar, por default se usa nombre derivado de la 
+    imagen original y el mismo path
+    """
+    global file_path
+    global gray_image
+
     if file_path and gray_image:
         ## Abrir cuadro de dialogo para guardar la imagen en escala de grises
         extension = file_path.suffix[1:]

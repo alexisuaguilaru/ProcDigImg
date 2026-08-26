@@ -5,23 +5,27 @@ El siguiente repositorio contienen algunos de los productos y proyectos realizad
 Las diferentes prácticas se pueden encontrar en sus respectivas carpetas junto con un archivo README a modo de reporte.
 
 ## Uso e Instalación
-* Instalar [uv](https://github.com/astral-sh/uv) siguiendo los pasos en [Installing uv](https://docs.astral.sh/uv/getting-started/installation/)
 * Clonar el presente repositorio
 ```bash
 git clone https://github.com/alexisuaguilaru/ProcDigImg.git
 cd ProcDigImg/
 ```
+
+Cada carpeta que representa una práctica o proyecto contiene un README a modo de reporte el cual contiene las instrucciones de uso específicamente para esa práctica o código.
+
+### Usando uv 
+Se sugiere ejecutar este proyecto usando uv para una mayor compatibilidad. Para ello sigue los siguientes pasos:
+* Instalar [uv](https://github.com/astral-sh/uv) siguiendo los pasos en [Installing uv](https://docs.astral.sh/uv/getting-started/installation/)
 * Sincronizar el proyecto uv y ejecutar los productos:
 ```bash
 uv sync
 ```
 
+### Usando Conda
 En caso de estar en un ambiente virtual basado en conda, para instalar las dependencias requeridas para la ejecución de las diferentes prácticas emplea:
 ```bash
 pip install -r requirements.txt
 ```
-
-Cada carpeta que representa una práctica o proyecto contiene un README a modo de reporte el cual contiene las instrucciones de uso específicamente para esa práctica.
 
 ## Autor, Afiliación y Contacto
 Alexis Aguilar [Estudiante de Licenciatura en "Tecnologías para la Información en Ciencias" en la Universidad Nacional Autónoma de México [UNAM](https://www.unam.mx/)]: alexis.uaguilaru@gmail.com
