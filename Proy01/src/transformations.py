@@ -29,6 +29,7 @@ def gain_bias_transformation(
         image: np.ndarray,
         gain_c: float,
         bias_b: float,
+        channels: list[int] | None = None,
     ) -> np.ndarray:
     """
     Función para aplicar una ganancia (gain) y 
@@ -37,7 +38,13 @@ def gain_bias_transformation(
     con el bias.
     """
 
-    return gain_c*image.astype(int)+bias_b
+    if not channels:
+        transf_image = gain_c*image.astype(int)+bias_b
+    else:
+        transf_image = image.copy().astype(int)
+        transf_image[:, :, channels] = gain_c*image[:, :, channels]+bias_b
+    
+    return transf_image
 
 def negative_transformation(image: np.ndarray) -> np.ndarray:
     """
@@ -51,6 +58,7 @@ def gamma_correction(
         image: np.ndarray,
         gamma: float,
         factor_k: float = 1,
+        channels: list[int] | None = None,
     ) -> np.ndarray:
     """
     Función para aplicar una corrección 
@@ -59,7 +67,13 @@ def gamma_correction(
     exponencial (no lineal)
     """
 
-    return factor_k*image**gamma
+    if not channels:
+        transf_image = factor_k*image**gamma
+    else:
+        transf_image = image.copy()
+        transf_image[:, :, channels] = factor_k*image[:, :, channels]**gamma
+    
+    return transf_image
 
 @image_limits_adjust()
 def logarithm_transformation(
@@ -93,7 +107,10 @@ def sigmoid_correction(
     return 1/(1+np.exp(factor_c*(threshold-norm_image)))
 
 @image_limits_adjust(factor_scaling=255)
-def histogram_equalize(image: np.ndarray) -> np.ndarray:
+def histogram_equalize(
+        image: np.ndarray,
+        channels: list[int] | None = None,
+    ) -> np.ndarray:
     """
     Función para aplicar una ecualización de contraste 
     empleando su histograma. Esta función permite ecualizar 
@@ -102,7 +119,13 @@ def histogram_equalize(image: np.ndarray) -> np.ndarray:
 
     if len(image.shape) == 2:
         image = np.expand_dims(image, 2)
-    equalize_image = np.apply_over_axes(equalize_channel, image, 2)
+    
+    if not channels:
+        equalize_image = np.apply_over_axes(equalize_channel, image, 2)
+    else:
+        equalize_image = image.copy()
+        equalize_image[:, :, channels] = np.apply_over_axes(equalize_channel, image[:, :, channels], 2)
+
     return equalize_image
 
 def equalize_channel(image_channel: np.ndarray, axis) -> np.ndarray:

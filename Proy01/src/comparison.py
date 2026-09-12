@@ -7,7 +7,8 @@ def gain_bias_comparison(
         image: np.ndarray, 
         filename: str, 
         gain: float, 
-        bias: float
+        bias: float,
+        channels: list[int] | None = None,
     ) -> plt.Figure:
     """
     Función para comparar visualmente los 
@@ -30,7 +31,7 @@ def gain_bias_comparison(
     axes[0].imshow(image)
     axes[0].set_title("Imagen original")
 
-    axes[1].imshow(gain_bias_transformation(image, gain, bias))
+    axes[1].imshow(gain_bias_transformation(image, gain, bias, channels))
     axes[1].set_title(f"Imagen Gain-Bias")
 
     return fig
@@ -39,7 +40,8 @@ def gamma_correction_comparison(
         image: np.ndarray, 
         filename: str, 
         lower_gamma: float, 
-        higher_gamma: float
+        higher_gamma: float,
+        channels: list[int] | None = None,
     ) -> plt.Figure:
     """
     Función para comparar visualmente los efectos 
@@ -59,18 +61,22 @@ def gamma_correction_comparison(
 
     fig.suptitle(f"Comparativa de Diferentes Correcciones Gamma en la Imagen {filename[-5]}")
 
-    axes[0].imshow(gamma_correction(image, lower_gamma))
+    axes[0].imshow(gamma_correction(image, lower_gamma, channels=channels))
     axes[0].set_title(f"Gamma igual a {lower_gamma:.2f}")
 
     axes[1].imshow(image)
     axes[1].set_title("Imagen original (Sin corrección)")
 
-    axes[2].imshow(gamma_correction(image, higher_gamma))
+    axes[2].imshow(gamma_correction(image, higher_gamma, channels=channels))
     axes[2].set_title(f"Gamma igual a {higher_gamma:.2f}")
 
     return fig
 
-def histogram_equalize_comparison(image: np.ndarray, filename: str) -> plt.Figure:
+def histogram_equalize_comparison(
+        image: np.ndarray, 
+        filename: str,
+        channels: list[int] | None = None,
+    ) -> plt.Figure:
     """
     Función para comparar visualmente los efectos 
     de la ecualización por histograma.
@@ -92,7 +98,7 @@ def histogram_equalize_comparison(image: np.ndarray, filename: str) -> plt.Figur
     axes[0].imshow(image)
     axes[0].set_title("Imagen original")
 
-    axes[1].imshow(histogram_equalize(image))
+    axes[1].imshow(histogram_equalize(image, channels))
     axes[1].set_title(f"Imagen ecualizada")
 
     return fig
