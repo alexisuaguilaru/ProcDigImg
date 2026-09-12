@@ -18,7 +18,7 @@
 <p style="font-size: 14px;"> Licenciatura  en Tecnologías para la Información en Ciencias </p>
 <p style="font-size: 15px;"> Procesamiento Digital de Imágenes </p>
 <br>
-<p style="font-size: 14px;"> A 26 de agosto de 2026 </p>
+<p style="font-size: 14px;"> A 26 de Agosto de 2026 </p>
 </div>
 
 ---
