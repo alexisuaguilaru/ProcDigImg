@@ -18,7 +18,7 @@ def image_limits_adjust(
     def image_adjust_wrapper(transformation: Callable[[np.ndarray], np.ndarray]) -> Callable:
 
         def image_adjust(image: np.ndarray, *args, **kwargs) -> np.ndarray:
-            transformed_image = transformation(image, *args, **kwargs)
+            transformed_image = transformation(image.astype(int), *args, **kwargs)
             return (factor_scaling*transformed_image).round().astype(int).clip(0, 255)
         return image_adjust
     
@@ -39,9 +39,9 @@ def gain_bias_transformation(
     """
 
     if not channels:
-        transf_image = gain_c*image.astype(int)+bias_b
+        transf_image = gain_c*image+bias_b
     else:
-        transf_image = image.copy().astype(int)
+        transf_image = image.copy()
         transf_image[:, :, channels] = gain_c*image[:, :, channels]+bias_b
     
     return transf_image

@@ -29,7 +29,27 @@ def load_images_dataset():
         filenames.append(path.name)
     return images, filenames
 
-def visual_describe_image(image: np.ndarray, filename: str) -> plt.Figure:
+def save_plot(
+        create_plot: Callable[[np.ndarray, str], tuple[plt.Figure, str | None]]
+    ) -> Callable:
+    """
+    Función para guardar un plot diseñado o 
+    creado. Se espera que la función decorada 
+    devuelva el objeto Figure y el nombre de 
+    la figura.
+
+    Devuelve el plot creado.
+    """
+
+    def saver(image: np.ndarray, *args, **kwargs) -> plt.Figure:
+        fig, fig_name = create_plot(image, *args, **kwargs)
+        if fig_name: fig.savefig(f"./results/{fig_name}.jpg")
+        return fig
+    
+    return saver
+
+@save_plot
+def visual_describe_image(image: np.ndarray, filename: str) -> tuple[plt.Figure, str]:
     """
     Genera el plot que describe visualmente una imagen al 
     presentarla en el formato RGB (original), a escala de grises 
@@ -62,9 +82,10 @@ def visual_describe_image(image: np.ndarray, filename: str) -> plt.Figure:
         axes[color].imshow(image_channel)
         axes[color].set_title(f"Canal {color} ({name})")
 
-    return fig
+    return fig, f"describe_{filename[:-4]}"
 
-def channels_histograms(image: np.ndarray, filename: str) -> plt.Figure:
+@save_plot
+def channels_histograms(image: np.ndarray, filename: str) -> tuple[plt.Figure, str]:
     """
     Función para generar el plot con los histogramas 
     por cada canal de color de la imagen original. 
@@ -87,4 +108,4 @@ def channels_histograms(image: np.ndarray, filename: str) -> plt.Figure:
         axes[channel].hist(intensities, bins=256, color=color.lower())
         axes[channel].set_title(f"Canal {color} ({name})")
 
-    return fig
+    return fig, f"channels_{filename[:-4]}"
