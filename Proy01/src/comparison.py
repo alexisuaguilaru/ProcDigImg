@@ -111,6 +111,7 @@ def plot_list_gain_bias(
         filename: str,
         gains: list[float],
         biases: list[float],
+        channels: list[int] | None = None,
         save_fig: bool = True,
     ) -> None:
     """
@@ -124,7 +125,7 @@ def plot_list_gain_bias(
     """
 
     for gain, bias in zip(gains, biases):
-        plot_gain_bias(image, filename, gain, bias, save_fig)    
+        plot_gain_bias(image, filename, gain, bias, channels, save_fig)
 
 @save_plot
 def plot_gain_bias(
@@ -132,6 +133,7 @@ def plot_gain_bias(
         filename: str, 
         gain: float,
         bias: float,
+        channels: list[int] | None = None,
         save_fig: bool = True,
     ) -> tuple[plt.Figure, str | None]:
     """
@@ -153,7 +155,7 @@ def plot_gain_bias(
         },
         figsize = (4.5, 4.6),
     )
-    axes.imshow(gain_bias_transformation(image, gain, bias))
+    axes.imshow(gain_bias_transformation(image, gain, bias, channels))
     axes.set_title(f"Trans. Gain-Bias con c={gain:.2f} y b={bias:.2f} en la Imagen {filename[-5]}")
 
     return fig, f"gain_bias_{gain:.2f}_{bias:.2f}_{filename[:-4]}" if save_fig else None
@@ -162,6 +164,7 @@ def plot_list_gammas_corrections(
         image: np.ndarray, 
         filename: str,
         gammas: list[float],
+        channels: list[int] | None = None,
         save_fig: bool = True,
     ) -> None:
     """
@@ -181,6 +184,7 @@ def plot_gamma_correction(
         image: np.ndarray, 
         filename: str, 
         gamma: float,
+        channels: list[int] | None = None,
         save_fig: bool = True,
     ) -> tuple[plt.Figure, str | None]:
     """
@@ -202,7 +206,7 @@ def plot_gamma_correction(
         },
         figsize = (4.5, 4.6),
     )
-    axes.imshow(gamma_correction(image, gamma))
+    axes.imshow(gamma_correction(image, gamma, channels=channels))
     axes.set_title(f"Corrección Gamma con gamma={gamma:.2f} en la Imagen {filename[-5]}")
 
     return fig, f"gamma_{gamma:.2f}_{filename[:-4]}" if save_fig else None
