@@ -1,10 +1,12 @@
 # Python Code
 .venv
 __pycache__
+.ipynb_checkpoints
 
 # LaTeX Files
 *.aux
 *.bbl
+*.blg
 *.bcf
 *.fdb*
 *.fls
