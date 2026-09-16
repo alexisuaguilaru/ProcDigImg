@@ -1,2 +1,15 @@
+# Python Code
 .venv
 __pycache__
+
+# LaTeX Files
+*.aux
+*.bbl
+*.bcf
+*.fdb*
+*.fls
+*.log
+*.out
+*.run.xml
+*.sync*
+*.toc

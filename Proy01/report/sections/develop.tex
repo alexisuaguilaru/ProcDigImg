@@ -1,0 +1,24 @@
+\section{Realización del Proyecto}
+    Para facilitar la carga y posterior aplicación de transformaciones a las imágenes, 
+    se decidió usar OpenCV \parencite{opencv_library} para la lectura de las imágenes 
+    como arrays de NumPy \parencite{numpy_library}, considerando que OpenCV no lee los 
+    canales de un imagen como RGB sino BGR, por lo que se tuvo que realizar esta 
+    transformación menor para una adecuada lectura y visualización de las imágenes 
+    empleando Matplotlib \parencite{matplotlib_library}.\\
+
+    Para cada una de las imágenes del dataset, se realizó primero una visualización 
+    inicial en la que se muestra su versión original, en escala de grises y cada 
+    canal de color de forma individual. Esta función permitió dar una inspección 
+    sobre qué problema o en qué situación estaba una cierta imagen, e igualmente 
+    para determinar si después de aplicar las transformaciones convenientes se 
+    alcanzaba una mejora o no visualmente. Adicionalmente, se incluyen los histogramas 
+    de las intensidades de los colores por canal con el fin de estimar los parámetros 
+    más adecuados para las transformaciones para así lograr una mejora más fina 
+    sobre la estética de las imágenes.\\
+
+    Tomando en cuenta esta estimación heurística, se realizó la comparación del antes 
+    (imagen original) contra el después de aplicar la transformación, donde de forma 
+    general no todas las imágenes mejoraron con una misma técnica, es decir, algunas 
+    se les tuvo que aplicar la corrección gamma con un valor negativo mientras que 
+    en otras les fue más conveniente usar la transformación gain-bias para lograr un 
+    resultado más natural o una mejora en la calidad visual.

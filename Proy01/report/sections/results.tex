@@ -1,0 +1,211 @@
+\section{Resultados}
+    En esta sección se presentan los resultados y mejoras visuales aplicadas 
+    en cada imagen del dataset propuesto.
+
+    \subsection{Imagen 1}
+        En esta primera imagen se puede evidenciar que tiene un bajo brillo, por lo que es 
+        conveniente la aplicación de la corrección gamma o de la transformación gain-bias 
+        para incrementar su iluminación general. De la escala de grises, se puede apreciar 
+        que su contraste es el mínimo para distinguir sus elementos más no el más adecuado, 
+        por lo que también se podría mejorar. 
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.9\textwidth]{../results/describe_imagen1.jpg}
+            \caption{Descripción visual de la Imagen 1 en la que se puede observar un problema de brillo y de contraste a mejorar.}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{../results/channels_imagen1.jpg}
+            \caption{Histogramas de canales de la Imagen 1 donde se evidencia el bajo brillo de la imagen y la posibilidad de mejorar el contraste.}
+        \end{figure}
+
+        Al aplicar la corrección gamma con un gamma menor a 1 propicia que la imagen tienda 
+        a colores oscuros debido a que los propios valores se ven reducidos. Por ello, al 
+        emplear un gamma mayor a 1 hace que la imagen se vea más ``viva'' y, lo más importante, 
+        se distingan los colores adecuadamente. De igual manera, usar un gamma muy alto (mayor a 
+        1.4) hace que todos las intensidades tiendan a valores cada vez más próximos a 255, 
+        convirtiendo totalmente en blanco a la imagen.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{../results/gammas_imagen1.jpg}
+            \caption{Corrección gamma a la Imagen 1 en la que un valor de gamma mayor a 1 mejora la calidad de la imagen.}
+        \end{figure}
+
+        Empleando la transformación gain-bias se logra los mismos resultados que por la 
+        corrección gamma, es decir, una mejora en el brillo final de la imagen. Por lo que 
+        ambas técnicas logran los resultados esperados sin tener que realizar una búsqueda 
+        exhaustiva de los valores en las transformaciones.
+
+        % \begin{figure}[H]
+            % \centering
+            % \includegraphics[width=\textwidth]{../results/gain_bias_imagen1.jpg}
+            % \caption{Transformación gain-bias de la Imagen 1 con una ganancia positiva mejora la iluminación y distinción de los colores en la imagen resultante.}
+        % \end{figure}
+
+    \subsection{Imagen 2}
+        En esta segunda imagen se puede mostrar que tiene un alto brillo, por lo que una transformación 
+        gain-bias podría mejorar la calidad de la imagen sin alterar su contraste o colores. De la 
+        escala de grises, se pueden delimitar, en la medida de lo posible, los elementos que componen a 
+        imagen, esto sugiere que el problema subyacente es el brillo mismo.\\
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.9\textwidth]{../results/describe_imagen2.jpg}
+            \caption{Descripción visual de la Imagen 2 en la que se puede observar un problema de mucho brillo.}
+        \end{figure}       
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=\textwidth]{../results/channels_imagen2.jpg}
+            \caption{Histogramas de canales de la Imagen 2 donde se evidencia el alto brillo de la imagen y un contraste deficiente.}
+        \end{figure}
+
+        Al aplicar la corrección gamma, con valores inclusive ligeramente diferentes a 1, se puede 
+        apreciar que la calidad de la imagen empeora de forma drástica, este hecho muestra que 
+        esta técnica no es la más adecuada para reducir el impacto del brillo sin deformar las 
+        tonalidades y el propio contraste de la imagen. \\
+
+        % \begin{figure}[H]
+            % \centering
+            % \includegraphics[width=\textwidth]{../results/gammas_imagen2.jpg}
+            % \caption{Corrección gamma a la Imagen 2 en la que un valor de gamma menor a 1 podría mejorar la calidad, mas no de la forma esperada.}
+        % \end{figure}
+
+        Como se mencionó, la transformación gain-bias logra los resultados y mejoras esperadas, en el 
+        sentido de que se reduce el brillo lo suficiente para no reducir tampoco el contraste. Lo cual 
+        favorece a que se puedan distinguir de mejor manera los elementos que componen a la imagen, 
+        por lo que resulta más conveniente esta técnica que la corrección gamma. Para lograr este 
+        efecto fue necesario realizar un estimación de los valores más exhaustiva debido a que usar 
+        un valor de ganancia mayor a 1.4 provocaba que la imagen se volviese blanca, y también se tuvo 
+        que ajustar esa sobreexposición un sesgo conveniente. 
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{../results/gain_bias_imagen2.jpg}
+            \caption{Transformación gain-bias de la Imagen 2 con un sesgo negativo hace posible bajar la iluminación de la imagen y mejorar ligeramente el contraste de la imagen final.}
+        \end{figure}
+
+    \subsection{Imagen 3}
+
+        En la tercera imagen se muestra una clara ausencia de iluminación, la cual impede 
+        vislumbrar los elementos presentes. Por la escala de grises y los mismos histogramas 
+        sugieren que se ocupa de incrementar tanto el brillo como el contraste para lograr 
+        una mejora en la calidad de la imagen. Por lo que la corrección gamma va a permitir 
+        este incremento de forma natural sin distorsionar los colores.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.9\textwidth]{../results/describe_imagen3.jpg}
+            \caption{Descripción visual de la Imagen 3 en la que se puede observar un problema de brillo a mejorar.}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{../results/channels_imagen3.jpg}
+            \caption{Histogramas de canales de la Imagen 3 donde se evidencia el bajo brillo de la imagen y un contraste deficiente.}
+        \end{figure}
+
+        Como se mencionó, al aplicar una corrección gamma con un gamma mayor a 1 se logra iluminar 
+        la imagen sin sobreexponerla mientras se preserva un contraste más natural. En el caso contrario, 
+        con una gamma menor a 1, la imagen se pierde en colores más oscuros, y con un mayor a 1.35 
+        empiezan a aparecer tonalidades más naranjadas o zonas con iluminación no natural.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{../results/gammas_imagen3.jpg}
+            \caption{Corrección gamma a la Imagen 3 en la que un valor de gamma mayor a 1 podría mejorar la calidad de la forma esperada.}
+        \end{figure}
+
+        Así como ocurrió en la imagen 1, con adecuados valores de ganancia y sesgo se pueden 
+        lograr resultados parecidos a los generados por una corrección gamma, pero esta técnica 
+        es mas eficientes para estos casos que se requieren incrementar tanto el brillo como el 
+        contraste. 
+
+        % \begin{figure}[H]
+            % \centering
+            % \includegraphics[width=\textwidth]{../results/gain_bias_imagen3.jpg}
+            % \caption{Transformación gain-bias de la Imagen 2 con un sesgo negativo hace posible bajar la iluminación de la imagen y mejorar ligeramente el contraste de la imagen final.}
+        % \end{figure}
+
+    \subsection{Imagen 4}
+
+        En esta cuarta imagen se caracteriza por tener una zona central sobreexpuesta pero 
+        cuenta con un buen contraste. Es decir, por su escala de grises se puede observar 
+        los diferentes elementos de la imagen y se reduce a que su principal problema es 
+        un brillo alto, que se podría resolver con una adecuada transformación gain-bias.\\
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.9\textwidth]{../results/describe_imagen4.jpg}
+            \caption{Descripción visual de la Imagen 4 en la que se puede observar un problema de iluminación en la zona central.}
+        \end{figure}
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=\textwidth]{../results/channels_imagen4.jpg}
+            \caption{Histogramas de canales de la Imagen 4 donde se muestra que cuenta con un buen contraste.}
+        \end{figure}
+
+        Al aplicar una corrección gamma con valores ligeramente diferentes a 1 hacen que se 
+        degrade la calidad de la imagen en el sentido de que se oscurece o ilumina 
+        demasiado, esto por tener histogramas bien ecualizados y mueva demasiados valores 
+        a los extremos de intensidad.\\
+
+        % \begin{figure}[H]
+            % \centering
+            % \includegraphics[width=\textwidth]{../results/gammas_imagen4.jpg}
+            % \caption{Corrección gamma a la Imagen 2 en la que un valor de gamma menor a 1 podría mejorar la calidad, mas no de la forma esperada.}
+        % \end{figure}
+
+        En cambio, al emplear la transformación gain-bias se logra una reducción del brillo 
+        de la zona central sin oscurece toda la imagen de forma natural. Esto se debe a que 
+        esta transformación permite realizar cambios más suaves sin tener que alterar 
+        drásticamente todos los colores. 
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{../results/gain_bias_imagen4.jpg}
+            \caption{Transformación gain-bias de la Imagen 4 con una ganancia positiva y menor a 1 permite reducir el brillo de la zona central.}
+        \end{figure}
+
+    \subsection{Imagen 5}
+
+        La quinta imagen presenta una evidente falta en la intensidad del canal verde, lo cual afecta 
+        directamente en como es percibida la imagen, viéndose extraña o poco natural. Por lo tanto, la 
+        transformación se debería que aplicar únicamente al canal verde, específicamente ambas técnicas 
+        van a permitir mejorar la presencia de este canal.
+        
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.9\textwidth]{../results/describe_imagen5.jpg}
+            \caption{Descripción visual de la Imagen 5 en la que se puede observar un problema de subeexposición en el canal verde.}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{../results/channels_imagen5.jpg}
+            \caption{Histogramas de canales de la Imagen 5 donde se evidencia que tiene un buen contraste más no una buena representación del canal verde.}
+        \end{figure}
+
+        Si se aplica una corrección gamma sobre el canal verde con un gamma menor a 1, provocará 
+        una reducción del color verde en la imagen. Mientras con un valor mayor a 1, se logra el 
+        efecto deseado de incrementar su intensidad, así realizando una corrección significativa.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{../results/gammas_imagen5.jpg}
+            \caption{Corrección gamma a la Imagen 5 en la que un valor de gamma mayor a 1 sobre el canal verde logra la mejora deseada.}
+        \end{figure}
+
+        De igual forma, la transformación gain-bias sobre el canal verde permite la corrección de 
+        este color logrando una mejora en la calidad visual resultante. Por lo que ambas técnicas 
+        logran los efectos positivos sobre la imagen. 
+
+        % \begin{figure}[H]
+            % \centering
+            % \includegraphics[width=\textwidth]{../results/gain_bias_imagen5.jpg}
+            % \caption{Transformación gain-bias de la Imagen 5 sobre el canal verde permite lograr tonalidades más naturales.}
+        % \end{figure}

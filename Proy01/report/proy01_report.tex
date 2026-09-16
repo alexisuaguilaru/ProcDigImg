@@ -1,0 +1,97 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+\usepackage[english,spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{geometry}
+\geometry{
+    left=2cm, 
+    right=2cm,
+    top=3cm,  
+    bottom=2cm
+}
+
+\usepackage[english,spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\usepackage{enumitem}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{makecell}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs} 
+
+\usepackage{setspace}
+\setstretch{1.5}
+\setlength{\parindent}{0pt}
+
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage[style=apa,sorting=none]{biblatex}
+\addbibresource{../../recursos/references.bib}
+
+\usepackage{xcolor}
+\usepackage{pgfgantt}
+
+\begin{document}
+    \begin{titlepage}
+        \begin{minipage}[c]{0.1\textwidth}
+            \includegraphics[width=\textwidth]{../../recursos/logo_unam.jpg}
+        \end{minipage}
+        \begin{minipage}{0.8\textwidth}
+            \centering
+            {\Large\textbf{Universidad Nacional Autónoma de México}\\}
+            {\large\textbf{Escuela Nacional de Estudios Superiores\\\underline{Unidad Morelia}}}
+        \end{minipage}
+        \begin{minipage}[c]{0.1\textwidth}
+            \includegraphics[width=\textwidth]{../../recursos/logo_enes.jpg}
+        \end{minipage}
+        \vspace{3cm}
+
+        \centering
+
+        {\large{Reporte de Proyecto 1\\}}
+        {\Large\textbf{Conociendo la imagen}}
+        \vspace{2cm}
+        
+        {{PRESENTA:\\}}
+        {\large\textbf{Aguilar Uribe Alexis Uriel}}\\
+        {{NÚMERO DE CUENTA:\\}}
+        {\large \textit{424060075}}
+        \vspace{1cm} 
+        
+        {{PROFESOR:\\}}
+        {\large\textbf{Dr. Tinoco Martínez Sergio Rogelio}}
+        \vspace{3cm}
+        
+        {\large Licenciatura  en Tecnologías para la Información en Ciencias}\\
+        {\large \textit{Procesamiento Digital de Imágenes}}
+        
+        \vspace{2.5cm}
+        \begin{flushright}
+            A 24 de Septiembre de 2026
+        \end{flushright}
+
+    \end{titlepage}
+
+    \tableofcontents
+    \newpage
+
+    \include{sections/introduction}
+    \include{sections/problem}
+    \include{sections/develop}
+    \include{sections/results}
+    \include{sections/table_results}
+    \include{sections/conclusions}
+    
+    \newpage
+    \printbibliography
+
+\end{document}

@@ -1,0 +1,28 @@
+\section{Planteamiento del Problema}
+    Dado un conjunto de imágenes con diferentes problemas:
+    \begin{enumerate}[label=\alph*.]
+        \item Bajo contraste.
+        \item Sobreexposición.
+        \item Subexposición.
+        \item Iluminación no uniforme.
+        \item Predominio de determinado canal de color.
+    \end{enumerate}
+    Se deberá que desarrollar un pequeño sistema de análisis y mejoramiento de imágenes, 
+    el cual deberá que:
+    \begin{enumerate}
+        \item Cargar una imagen.
+        \item Identificar sus dimensiones y número de canales.
+        \item Mostrar histogramas.
+        \item Genera versión en escala de grises.
+        \item Modificar brillo.
+        \item Modificar contraste.
+        \item Aplicar transformación gamma.
+        \item Realizar ecualización de histograma.
+        \item Comparar las imágenes antes/después.
+        \item Generar un reporte de resultados.
+    \end{enumerate}
+
+    \subsection{Restricciones}
+        Al menos dos transformaciones deberán implementarse manualmente con NumPy, sin utilizar 
+        una función de alto nivel que haga directamente todo el procedimiento. Por ejemplo, no 
+        basta con llamar a una función de ecualización y entregar el resultado.
