@@ -1,6 +1,7 @@
 \section{Resultados}
     En esta sección se presentan los resultados y mejoras visuales aplicadas 
-    en cada imagen del dataset propuesto.
+    en cada imagen del dataset propuesto junto con la justificación de las 
+    decisiones tomadas.
 
     \subsection{Imagen 1}
         En esta primera imagen se puede evidenciar que tiene un bajo brillo, por lo que es 
@@ -11,7 +12,7 @@
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.9\textwidth]{../results/describe_imagen1.jpg}
+            \includegraphics[width=0.8\textwidth]{../results/describe_imagen1.jpg}
             \caption{Descripción visual de la Imagen 1 en la que se puede observar un problema de brillo y de contraste a mejorar.}
         \end{figure}
 
@@ -25,8 +26,7 @@
         a colores oscuros debido a que los propios valores se ven reducidos. Por ello, al 
         emplear un gamma mayor a 1 hace que la imagen se vea más ``viva'' y, lo más importante, 
         se distingan los colores adecuadamente. De igual manera, usar un gamma muy alto (mayor a 
-        1.4) hace que todos las intensidades tiendan a valores cada vez más próximos a 255, 
-        convirtiendo totalmente en blanco a la imagen.
+        1.4) hace que la imagen tienda a volverse blanca.
 
         \begin{figure}[H]
             \centering
@@ -35,13 +35,12 @@
         \end{figure}
 
         Empleando la transformación gain-bias se logra los mismos resultados que por la 
-        corrección gamma, es decir, una mejora en el brillo final de la imagen. Por lo que 
-        ambas técnicas logran los resultados esperados sin tener que realizar una búsqueda 
-        exhaustiva de los valores en las transformaciones.
+        corrección gamma. Por lo que ambas técnicas logran los resultados esperados sin 
+        tener que realizar una búsqueda exhaustiva de los valores en las transformaciones.
 
         % \begin{figure}[H]
             % \centering
-            % \includegraphics[width=\textwidth]{../results/gain_bias_imagen1.jpg}
+            % \includegraphics[width=0.9\textwidth]{../results/gain_bias_imagen1.jpg}
             % \caption{Transformación gain-bias de la Imagen 1 con una ganancia positiva mejora la iluminación y distinción de los colores en la imagen resultante.}
         % \end{figure}
 
@@ -49,12 +48,12 @@
         En esta segunda imagen se puede mostrar que tiene un alto brillo, por lo que una transformación 
         gain-bias podría mejorar la calidad de la imagen sin alterar su contraste o colores. De la 
         escala de grises, se pueden delimitar, en la medida de lo posible, los elementos que componen a 
-        imagen, esto sugiere que el problema subyacente es el brillo mismo.\\
+        la imagen, esto sugiere que el problema subyacente es el brillo mismo.\\
 
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.9\textwidth]{../results/describe_imagen2.jpg}
-            \caption{Descripción visual de la Imagen 2 en la que se puede observar un problema de mucho brillo.}
+            \includegraphics[width=0.8\textwidth]{../results/describe_imagen2.jpg}
+            \caption{Descripción visual de la Imagen 2 en la que se puede observar un problema de brillo alto.}
         \end{figure}       
 
         \begin{figure}[h]
@@ -74,17 +73,17 @@
             % \caption{Corrección gamma a la Imagen 2 en la que un valor de gamma menor a 1 podría mejorar la calidad, mas no de la forma esperada.}
         % \end{figure}
 
-        Como se mencionó, la transformación gain-bias logra los resultados y mejoras esperadas, en el 
+        Como se mencionó, la transformación gain-bias logra los resultados, en el 
         sentido de que se reduce el brillo lo suficiente para no reducir tampoco el contraste. Lo cual 
         favorece a que se puedan distinguir de mejor manera los elementos que componen a la imagen, 
         por lo que resulta más conveniente esta técnica que la corrección gamma. Para lograr este 
         efecto fue necesario realizar un estimación de los valores más exhaustiva debido a que usar 
         un valor de ganancia mayor a 1.4 provocaba que la imagen se volviese blanca, y también se tuvo 
-        que ajustar esa sobreexposición un sesgo conveniente. 
+        que ajustar esa sobreexposición con un sesgo conveniente. 
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=\textwidth]{../results/gain_bias_imagen2.jpg}
+            \includegraphics[width=0.9\textwidth]{../results/gain_bias_imagen2.jpg}
             \caption{Transformación gain-bias de la Imagen 2 con un sesgo negativo hace posible bajar la iluminación de la imagen y mejorar ligeramente el contraste de la imagen final.}
         \end{figure}
 
@@ -98,7 +97,7 @@
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.9\textwidth]{../results/describe_imagen3.jpg}
+            \includegraphics[width=0.8\textwidth]{../results/describe_imagen3.jpg}
             \caption{Descripción visual de la Imagen 3 en la que se puede observar un problema de brillo a mejorar.}
         \end{figure}
 
@@ -126,7 +125,7 @@
 
         % \begin{figure}[H]
             % \centering
-            % \includegraphics[width=\textwidth]{../results/gain_bias_imagen3.jpg}
+            % \includegraphics[width=0.9\textwidth]{../results/gain_bias_imagen3.jpg}
             % \caption{Transformación gain-bias de la Imagen 2 con un sesgo negativo hace posible bajar la iluminación de la imagen y mejorar ligeramente el contraste de la imagen final.}
         % \end{figure}
 
@@ -139,7 +138,7 @@
 
         \begin{figure}[h]
             \centering
-            \includegraphics[width=0.9\textwidth]{../results/describe_imagen4.jpg}
+            \includegraphics[width=0.8\textwidth]{../results/describe_imagen4.jpg}
             \caption{Descripción visual de la Imagen 4 en la que se puede observar un problema de iluminación en la zona central.}
         \end{figure}
 
@@ -151,8 +150,8 @@
 
         Al aplicar una corrección gamma con valores ligeramente diferentes a 1 hacen que se 
         degrade la calidad de la imagen en el sentido de que se oscurece o ilumina 
-        demasiado, esto por tener histogramas bien ecualizados y mueva demasiados valores 
-        a los extremos de intensidad.\\
+        demasiado, esto por tener histogramas bien ecualizados, ocasionando que demasiados 
+        valores se muevan a los extremos de intensidad.\\
 
         % \begin{figure}[H]
             % \centering
@@ -167,7 +166,7 @@
 
         \begin{figure}[H]
             \centering
-            \includegraphics[width=\textwidth]{../results/gain_bias_imagen4.jpg}
+            \includegraphics[width=0.9\textwidth]{../results/gain_bias_imagen4.jpg}
             \caption{Transformación gain-bias de la Imagen 4 con una ganancia positiva y menor a 1 permite reducir el brillo de la zona central.}
         \end{figure}
 
@@ -180,7 +179,7 @@
         
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.9\textwidth]{../results/describe_imagen5.jpg}
+            \includegraphics[width=0.8\textwidth]{../results/describe_imagen5.jpg}
             \caption{Descripción visual de la Imagen 5 en la que se puede observar un problema de subeexposición en el canal verde.}
         \end{figure}
 
@@ -202,10 +201,10 @@
 
         De igual forma, la transformación gain-bias sobre el canal verde permite la corrección de 
         este color logrando una mejora en la calidad visual resultante. Por lo que ambas técnicas 
-        logran los efectos positivos sobre la imagen. 
+        logran efectos positivos sobre la imagen. 
 
         % \begin{figure}[H]
             % \centering
-            % \includegraphics[width=\textwidth]{../results/gain_bias_imagen5.jpg}
+            % \includegraphics[width=0.9\textwidth]{../results/gain_bias_imagen5.jpg}
             % \caption{Transformación gain-bias de la Imagen 5 sobre el canal verde permite lograr tonalidades más naturales.}
         % \end{figure}

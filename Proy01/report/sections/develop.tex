@@ -1,4 +1,4 @@
-\section{Realización del Proyecto}
+\section{Realización General del Proyecto}
     Para facilitar la carga y posterior aplicación de transformaciones a las imágenes, 
     se decidió usar OpenCV \parencite{opencv_library} para la lectura de las imágenes 
     como arrays de NumPy \parencite{numpy_library}, considerando que OpenCV no lee los 
@@ -19,6 +19,17 @@
     Tomando en cuenta esta estimación heurística, se realizó la comparación del antes 
     (imagen original) contra el después de aplicar la transformación, donde de forma 
     general no todas las imágenes mejoraron con una misma técnica, es decir, algunas 
-    se les tuvo que aplicar la corrección gamma con un valor negativo mientras que 
+    se les tuvo que aplicar la corrección gamma con un valor mayor a 1 mientras que 
     en otras les fue más conveniente usar la transformación gain-bias para lograr un 
-    resultado más natural o una mejora en la calidad visual.
+    resultado más natural o una mejora en la calidad visual.\\
+
+    Algunos aspectos importantes que se tomaron en cuenta durante la implementación 
+    y desarrollo del código fue el uso de decoradores de Python para factorizar 
+    cierta lógicas o proceso (como el guardar un plot creado por Matplotlib o aplicar 
+    el reajuste del rango de valores en una imagen para que sus valores sean entre 
+    0 y 255), este patrón de programación facilitó el desarrollo de las técnicas 
+    de mejora (solamente se tuvo que implementar el algoritmo asociado) y el 
+    guardar los experimentos generados como plots. Otro aspecto que se tomó en 
+    cuenta fue que las imágenes son cargadas usando \texttt{uint8}, el cual limita 
+    las operaciones a realizarse sobre 8 bits y sin bit de signo, por ello 
+    antes de ejecutar una transformación se le aplica una conversión a \texttt{int64}.

@@ -43,7 +43,7 @@ def save_plot(
 
     def saver(image: np.ndarray, *args, **kwargs) -> plt.Figure:
         fig, fig_name = create_plot(image, *args, **kwargs)
-        if fig_name: fig.savefig(f"./results/{fig_name}.jpg")
+        if fig_name: fig.savefig(f"./results/{fig_name}.jpg", dpi=300, bbox_inches="tight")
         return fig
     
     return saver
