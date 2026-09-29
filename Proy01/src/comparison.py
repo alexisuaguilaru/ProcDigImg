@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from transformations import gain_bias_transformation, gamma_correction, histogram_equalize
+from .load_viz import save_plot
+from .transformations import gain_bias_transformation, gamma_correction, histogram_equalize
 
 @save_plot
 def gain_bias_comparison(

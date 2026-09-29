@@ -136,7 +136,7 @@ def equalize_channel(image_channel: np.ndarray, axis) -> np.ndarray:
     Devuelve un canal ecualizado de la imagen.
     """
 
-    histogram, _ = np.histogram(image_channel, bins=256)
+    histogram, _ = np.histogram(image_channel, bins=image_channel.max()+1)
     normalized_histogram = histogram/image_channel.size
     running_sum = normalized_histogram.cumsum()
     return running_sum[image_channel]
