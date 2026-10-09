@@ -1,0 +1,32 @@
+\section{Planteamiento del Problema}
+    Para un conjunto de imágenes se deberá comparar:
+    \begin{enumerate}
+        \item Métodos de detección
+        \item Ventajas y desventajas de los diferentes métodos
+    \end{enumerate}
+    Así como comparar el resultado de aplicar los siguientes 
+    tipos de suavizados sobre la imagen (para cada método de 
+    detección), analizando el efecto sobre los bordes:
+    \begin{itemize}
+        \item Sin suavizado.
+        \item Con suavizado gaussiano con un kernel de $3\times3$ píxeles.
+        \item Con suavizado gaussiano con un kernel de $7\times7$ píxeles.
+    \end{itemize}
+
+    Adicionalmente, se deberá incluir la interpretación de las 
+    siguientes expresiones:
+    \begin{itemize}
+        \item $G_x = \frac{\partial I(x, y)}{\partial x}$
+        \item $G_y = \frac{\partial I(x, y)}{\partial y}$
+        \item $G = \sqrt{G_x^2+G_y^2}$
+        \item $\theta = \arctan(\frac{G_y}{G_x})$
+    \end{itemize}
+
+    Por último, se visualizará la orientación de los bordes colocando 
+    una flecha con inicio en el pixel actual, de longitud conveniente, 
+    que apunte en la dirección señalada por el ángulo calculado $\theta$.
+
+    \subsection{Restricciones}
+        Al menos Sobel y Prewitt deberán implementarse manualmente con 
+        NumPy, sin utilizar una función de alto nivel que haga el 
+        procedimiento.

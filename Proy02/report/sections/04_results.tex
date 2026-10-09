@@ -1,0 +1,175 @@
+\section{Resultados}
+    En la presente sección se exponen los resultados más relevantes de cada 
+    imagen del conjunto, destacando los filtros que obtuvieron mejores 
+    resultados, así como explicando sus ventajas y desventajas específicas 
+    en cada imagen o escenario. 
+
+    \subsection{Imagen 1}
+        Esta imagen contiene elementos tanto geométricos como no geométricas 
+        con texturas muy variables. Esto significa que los filtros que sean 
+        sensibles al ruido, van a detectar muchos no bordes, como le pasa 
+        principalmente al filtro de Laplaciano de Gaussiana; esto también 
+        ocurre en los filtros de Prewitt y Sobel. Pero este fenómeno se 
+        puede mitigar con un adecuado suavizado gaussiano.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\textwidth]{../results/describe_1.jpg}
+            \caption{Imagen 1 del conjunto.}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.65\textwidth]{../results/filter_laplacian_gaussian_1.jpg}
+            \caption{Filtro Laplaciano de Gaussiana sobre la Imagen 1 sin suavizado.}
+        \end{figure}
+
+        Al aplicar un suavizado gaussiano con un kernel de $7\times7$, se pueden 
+        mejorar los bordes detectados, haciendo que se vean más definidos o sin 
+        tanto ruido debido a las texturas. Donde más se muestra una mejora es en 
+        el filtro de Canny, debido a que detecta adecuadamente los bordes sin 
+        añadir ruido por la textura de los elementos, dicho así, el combinar la 
+        información de diferentes filtros le favorece para incrementar la sensibilidad 
+        al momento de detectar un verdadero borde. 
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.65\textwidth]{../results/filter_canny_1_suavizado_7x7.jpg}
+            \caption{Filtro de Canny sobre la Imagen 1 suavizada con un kernel $7\times7$.}
+        \end{figure}
+
+    \subsection{Imagen 2}
+        Esta imagen cuenta con dos peculiaridades: tiene una sobreexposición 
+        y vegetación que añade mucha texturas y contraste de colores (áreas 
+        oscuras y claras). Por lo tanto, para reducir el efecto del brillo, se 
+        le aplicó una función de ganancia-sesgo, esto va a favorece a encontrar 
+        algunos de los bordes empleando los filtros adecuados. Sin aplicar un 
+        suavizado gaussiano, cualquier filtro detecta parte del ruido presente, 
+        donde el filtro Laplaciano de Gaussiana es el más sensible a este efecto, 
+        y los filtros de Prewitt, Sobel y Canny manejan de mejor manera el ruido.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\textwidth]{../results/describe_2_enhancement.jpg}
+            \caption{Imagen 2 del conjunto.}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.65\textwidth]{../results/filter_prewitt_2.jpg}
+            \caption{Filtro Prewitt sobre la Imagen 2 sin suavizado.}
+        \end{figure}
+
+        Después de aplicar un suavizado gaussiano con un kernel de $7\times7$, es 
+        posible reducir el efecto de la textura de la vegetación y se aprovecha de 
+        mejor manera los filtros de Sobel y Prewitt para delimitar los elementos. 
+        Con este suavizado, los filtros de Laplace y Laplaciano de Gaussiana ignoran 
+        los cambios más sensibles de los colores (o locales).
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.65\textwidth]{../results/filter_sobel_2_suavizado_7x7.jpg}
+            \caption{Filtro de Sobel sobre la Imagen 2 suavizada con un kernel $7\times7$.}
+        \end{figure}
+
+    \subsection{Imagen 3}
+        Esta imagen dominan los elementos geométricos, esto permite que los filtros 
+        de Prewitt, Sobel y Canny detecten los bordes adecuadamente, mientras que 
+        los otros filtros puede que detecten algo de ruido por las texturas de las 
+        maderas. Con el fin de facilitar la detección de bordes, se mejora el brillo 
+        de la imagen con la función de ganancia-sesgo. Sin aplicar un suavizado, 
+        los filtros mencionados detectan los bordes adecuadamente, pero capturan algo 
+        de ruido por la textura de los elementos, siendo esta su mayor desventaja al 
+        ser sensibles a los cambios entre píxeles. Mientras que, en este caso, el filtro 
+        de Canny se vuelve el más robusto contra el ruido y funciona adecuadamente 
+        para ignorar falsos bordes.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\textwidth]{../results/describe_3_enhancement.jpg}
+            \caption{Imagen 3 del conjunto.}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.65\textwidth]{../results/filter_canny_3.jpg}
+            \caption{Filtro Canny sobre la Imagen 3 sin suavizado.}
+        \end{figure}
+
+        Con un suavizado gaussiano con kernel de $3\times3$, se logra que el filtro 
+        Laplaciano de Gaussiana ignore ligeramente la textura de los elementos y detecte 
+        adecuadamente los bordes, notando así que este filtro es sensible al ruido o 
+        cambios locales de colores.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.65\textwidth]{../results/filter_laplacian_gaussian_3_suavizado_3x3.jpg}
+            \caption{Filtro de Laplaciano de Gaussiana sobre la Imagen 3 suavizada con un kernel $3\times3$.}
+        \end{figure}
+        
+    \subsection{Imagen 4}
+        Esta imagen está dominada por elementos geométricos (rectas), esto 
+        permite que todos los filtros detecten los bordes más relevantes que 
+        constituyen a la imagen. Aunque cuenta con zonas oscuras y claras, éstas 
+        no afectan a la detección de bordes, debido a que no obstruyen a las 
+        diferencias entre tonalidades (entre un ventana y  una pared). En el 
+        caso de los filtros basados en la segunda derivada, tienen la desventaja 
+        de captura algo del ruido de las texturas, mientras que Prewitt y Sobel 
+        delimitan adecuadamente los bordes de los elementos.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\textwidth]{../results/describe_4.jpg}
+            \caption{Imagen 4 del conjunto.}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.65\textwidth]{../results/filter_laplacian_gaussian_4.jpg}
+            \caption{Filtro Laplaciano de Gaussiana sobre la Imagen 4 sin suavizado.}
+        \end{figure}
+
+        Reduciendo el ruido con un suavizado gaussiano con kernel de $7\times7$, 
+        se logra que el filtro de Canny detecte los bordes de los elementos principales 
+        que se aprecian con un buen brillo, es decir, aquellos que están en la 
+        zonas claras sin que las texturas creen falsos bordes. 
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.65\textwidth]{../results/filter_canny_4_suavizado_7x7.jpg}
+            \caption{Filtro de Canny sobre la Imagen 4 suavizada con un kernel $7\times7$.}
+        \end{figure}
+
+    \subsection{Imagen 5}
+        Aunque en esta imagen los elementos principales tiene una buena 
+        diferenciación de tonalidades, podemos notar que también cuentan 
+        con muchas texturas que harán que cualquier filtro las vea como 
+        bordes. Por ello, sin aplicar el suavizado cualquier filtro detecta 
+        esos cambios menores entre colores, lo que añade ruido a los bordes 
+        de forma innecesaria. 
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\textwidth]{../results/describe_7.jpg}
+            \caption{Imagen 5 del conjunto.}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.65\textwidth]{../results/filter_prewitt_7.jpg}
+            \caption{Filtro Prewitt sobre la Imagen 5 sin suavizado.}
+        \end{figure}
+
+        Aplicando un suavizado gaussiano con kernel de $7\times7$, permite 
+        detectar bordes correctamente sin el ruido añadido por las texturas 
+        de los diferentes elementos presentes en la imagen. En este caso, 
+        los filtros de Prewitt, Sobel y Canny detectan los bordes relevantes 
+        de los objetos sin dificultades, mientras que los filtros de Laplace y 
+        Laplaciano de Gaussiana no encuentran todos los bordes, tal vez debido 
+        a que el suavizado difuminó demasiado las tonalidades.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.65\textwidth]{../results/filter_canny_7_suavizado_7x7.jpg}
+            \caption{Filtro de Canny sobre la Imagen 5 suavizada con un kernel $7\times7$.}
+        \end{figure}

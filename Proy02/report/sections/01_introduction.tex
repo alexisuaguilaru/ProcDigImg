@@ -1,0 +1,27 @@
+\section{Introducción}
+    Entre las operaciones de preprocesamiento para los problemas 
+    de localización y segmentación se encuentra la detección de 
+    bordes, esta técnica permite aislar de forma preliminar los 
+    objetos que están presentes en una imagen. Por lo tanto, el 
+    problema de los bordes no solamente se limita a una curiosidad 
+    en visión computacional, sino que se vuelve un proceso intermedio 
+    para mejorar y optimizar los modelos de IA más sofisticados 
+    como las CNN (Convolutional Neural Network). Esta se vuelve la 
+    principal motivación para entender cómo surgen los bordes, 
+    cómo se pueden detectar y, aún más importante, cómo se pueden 
+    integrar estas ideas en redes neuronales.\\
+
+    Para realizar este proyecto, se hace uso de los filtros de Prewitt, 
+    Sobel, Laplace, Laplaciano de Gaussiana y Canny para compararlos 
+    en diferentes escenarios de bordes e imágenes con y sin suavizado 
+    gaussiano con el fin de entender sus ventajas, desventajas y 
+    cómo los bordes son afectados (su definición y ruido presente) por 
+    el filtro específico que se emplea. \\
+
+    De forma general, los filtros de Prewitt y Sobel permiten detectar 
+    bordes geométricos sin dificultad, mientras que los filtros de Laplace 
+    y Laplaciano de Gaussiana les va mejor en bordes curvos o no geométricos \parencite{tinoco2026pdi}. 
+    El filtro de Canny emplea de los filtros de Prewitt o de Sobel para 
+    detectar bordes horizontales, verticales y diagonales, esto favorece a 
+    que este filtro sea el más conveniente para todos los escenarios, en 
+    teoría \parencite{wiki2026canny}.

@@ -1,0 +1,27 @@
+\section{Realización General del Proyecto}
+    Primero se presentan las interpretaciones de los términos relacionados 
+    a la detección de bordes. Estas interpretaciones se basan en conocimientos 
+    previos y en lo visto en clases \parencite{tinoco2026pdi}: 
+    \begin{itemize}
+        \item $G_x = \frac{\partial I(x, y)}{\partial x}$: Indica cómo cambia la intensidad de los colores de forma horizontal. Estos cambios permiten encontrar líneas verticales.
+        \item $G_y = \frac{\partial I(x, y)}{\partial y}$: Indica cómo cambia la intensidad de los colores de forma vertical. Estos cambios permiten encontrar líneas horizontales.
+        \item $G = \sqrt{G_x^2+G_y^2}$: Representan la magnitud del cambio de la intensidad de los colores de forma direccional. Es la magnitud de la derivada direccional.
+        \item $\theta = \arctan(\frac{G_y}{G_x})$: Es la dirección hacia donde la intensidad de los colores cambia ``más fuerte''. Es el ángulo de la derivada direccional.
+    \end{itemize}
+
+    La implementaciones de las funciones relacionadas a los filtros se basan en 
+    las de CV2 \parencite{opencv_library}, es decir, se verificó que las funciones 
+    programadas con NumPy \parencite{numpy_library} coincidan en valores con 
+    las de CV2. Aunque estas funciones implementadas en NumPy nunca son llamadas, 
+    debido a que son ``lentas'' en comparación con su equivalente en CV2 que se 
+    ejecuta en Cpp. Por ello, solamente se manejan estas funciones con los parámetros 
+    adecuados para generar los resultados esperados que son requeridos para la 
+    práctica.\\ 
+
+    Todas las matrices asociadas a los filtros revisados en clase fueron implementados 
+    de forma manual, salvo los asociados a los suavizados gaussianos. Estos filtros 
+    fueron comparados sobre las diferentes variantes de suavizados aplicadas a las 
+    imágenes que, de forma general, permitieron reducir el ruido en regiones con 
+    texturas de alto contraste que podrían confundirse con bordes, es decir, píxeles 
+    aislados que son tratados como bordes. En algunos casos, el suavizado favoreció 
+    a encontrar bordes más definidos, en otros simplemente los difuminaron.

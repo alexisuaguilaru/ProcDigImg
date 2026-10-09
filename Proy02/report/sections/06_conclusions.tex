@@ -1,0 +1,42 @@
+\section{Conclusiones}
+    De las imágenes consideradas para el proyecto, me permitieron 
+    darme cuenta de que en la vida real está llena de muchas y diferentes 
+    texturas que para estos filtros pueden verse como si fueran 
+    bordes, por ello se vuelve vital aplicar una técnica de suavizado 
+    para reducir el efecto o implicaciones de considerar estos 
+    cambios menores en las tonalidades. Por ello, después del suavizado, 
+    los algoritmos como Prewitt, Sobel y Cany generan mejores bordes, 
+    debido a que la diferencia entre colores cercanos se redujo o 
+    es menor. El problema de los filtros de Prewitt y Sobel es que 
+    no son sensibles a las curvas, es decir, se les dificulta detectar 
+    elementos no rectos, pero esta es la principal ventaja que tienen 
+    los filtros de Laplace y Laplaciano de Gaussiana, son muy sensibles 
+    a los cambios de tonalidades (pues comparan vecinos adyacentes de 
+    píxeles) por ello pueden detectar curvas muy 
+    cerradas con una única pasada, es decir, no se requiere de dos 
+    ``versiones'' del mismo filtro sino con una única versión se 
+    puede detectar cualquier curva. Por esta misma sensibilidad, es que 
+    cualquier cambio en la textura o ruido se verá reflejado inmediatamente  
+    como un borde, para sanar esto podríamos introducir un umbral para 
+    determinar qué sí es un borde, y esta es la idea de filtro de Canny 
+    que emplea de varios filtros direccionales para detectar la mayoría 
+    de los bordes en una imagen (sin importar si son rectos o curvos). 
+    Por cómo se define, el filtro de Canny es el más complejo de usar 
+    y, personalmente, en el proyecto no pude usarlo debidamente porque 
+    no pude ajustar los umbrales adecuadamente sin que se descartara 
+    un borde o se introducieran no bordes (ruido).\\
+
+    Este miniproyecto se me hizo interesante el como existen métodos 
+    no tan sofisticados que pueden ser usados en etapas de preprocesamiento 
+    para mejorar la detección, localización y segmentación de objetos 
+    en tareas de visión por computadora empleando redes neuronales. 
+    Dicho así, no todo se trata de un modelo de IA que lo haga todo, sino 
+    también hay que entender y analizar el problema desde otras 
+    perspectivas o métodos que puedan integrarse a estos modelos. 
+    Y esto es lo que más me llevo de este proyecto, de realizar un paso 
+    hacia atrás para comprender un problema desde otra perspectiva 
+    empleando técnicas, métodos o modelos más sencillos/intuitivos 
+    y explicables (que no sean una caja negra) y que como científicos 
+    de datos podamos sacarle toda el conocimiento posible para 
+    seguir mejorando la solución final al problema que queremos 
+    resolver, evitando dejar huecos teóricos o sin considerar.
