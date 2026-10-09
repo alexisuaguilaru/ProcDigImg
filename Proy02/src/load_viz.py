@@ -130,38 +130,19 @@ def compare_filter_plot(
         image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     
     if isinstance(type_filter, str):
+        fig, axes = plt.subplots(
+            ncols = 1,
+            subplot_kw = {
+                "yticks": [],
+                "xticks": [],
+            },
+            figsize = (8, 2.5),
+        )
+
         function_filters = TypeFilters.get_functions(type_filter)
-        
-        if len(function_filters) == 2:
-            fig, axes = plt.subplots(
-                ncols = 2,
-                subplot_kw = {
-                    "yticks": [],
-                    "xticks": [],
-                },
-                figsize = (8, 2.5),
-            )
 
-            filter_horizontal, filter_vertical = function_filters
-            
-            axes[0].imshow(filter_horizontal(image), color)
-            axes[0].set_title("Versión Horizontal")
-            
-            axes[1].imshow(filter_vertical(image), color)
-            axes[1].set_title("Versión Vertical")
-
-        else:
-            fig, axes = plt.subplots(
-                ncols = 1,
-                subplot_kw = {
-                    "yticks": [],
-                    "xticks": [],
-                },
-                figsize = (8, 2.5),
-            )
-
-            function_filter = function_filters[0]
-            axes.imshow(function_filter(image), color)
+        filtered_image = sum([function_filter(image).astype(int) for function_filter in function_filters])
+        axes.imshow(filtered_image.clip(0, 255), color)
 
         fig.suptitle(f"Comparación del Filtro {TypeFilters.get_name(type_filter)} de la Imagen {filename.replace("_", " ")}")
         
