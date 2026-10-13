@@ -75,6 +75,7 @@ def orientation_borders_plot(
         image: np.ndarray, 
         filename: str, 
         type_filter: Literal["prewitt", "sobel", "laplacian_1", "laplacian_2", "laplacian_gaussian"],
+        width: float = 0.0001,
     ) -> tuple[plt.Figure, str]:
     """
     Función para mostrar la orientación 
@@ -87,11 +88,9 @@ def orientation_borders_plot(
     """
     filter_horizontal, filter_vertical = TypeFilters.get_filter(type_filter)
 
+    image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     gradient_x = cv2.filter2D(image.astype(float), -1, filter_horizontal, borderType=0)
     gradient_y = cv2.filter2D(image.astype(float), -1, filter_vertical, borderType=0)
-    magnitude = np.sqrt(gradient_x**2+gradient_y**2+1e-32)
-    gradient_x /= magnitude
-    gradient_y /= magnitude
 
     meshgrid_x = np.linspace(0, image.shape[1]-1, image.shape[1], dtype=int)
     meshgrid_y = np.linspace(image.shape[0]-1, 0, image.shape[0], dtype=int)
@@ -105,7 +104,7 @@ def orientation_borders_plot(
         figsize = (5, 4),
     )
 
-    axes.quiver(meshgrid_x, meshgrid_y, gradient_x, gradient_y)
+    axes.quiver(meshgrid_x, meshgrid_y, gradient_x, gradient_y, width=width)
 
     fig.suptitle(f"Orientación de los bordes de la Imagen {filename.replace("_", " ")}")
 

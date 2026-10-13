@@ -24,4 +24,10 @@
     imágenes que, de forma general, permitieron reducir el ruido en regiones con 
     texturas de alto contraste que podrían confundirse con bordes, es decir, píxeles 
     aislados que son tratados como bordes. En algunos casos, el suavizado favoreció 
-    a encontrar bordes más definidos, en otros simplemente los difuminaron.
+    a encontrar bordes más definidos, en otros simplemente los difuminaron.\\
+
+    Aunque si se implementó la función para mostrar la orientación de los bordes con 
+    flechas (\verb|orientation_borders_plot|), tiene un detalle estilístico importante: 
+    no funciona para todos los tamaños (resolución) de imágenes. Esto debido a que ajustar 
+    el tamaño de la flecha puede o desaparecer del plot o ocupar más espacio del debido. 
+    Para resoluciones bajas, sí se aprecia como las flechas se orientan según los bordes. 
