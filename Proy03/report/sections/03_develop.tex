@@ -1,0 +1,13 @@
+\section{Realización General del Proyecto}
+    Las implementaciones de las transformaciones afines se realizaron en NumPy \parencite{numpy_library}, 
+    las cuales fueron verificadas de forma visual sobre el conjunto de imágenes empleado 
+    para este proyecto. Esta verificación permitió mejorar la implementación de forma progresiva 
+    para ajustarlas al resultado de la transformación esperada.\\
+
+    Para aplicar correctamente la transformada afín, se empleó de la transformada inversa 
+    junto con la interpolación bilineal para estimar la intensidad del color en el pixel 
+    de la imagen resultante (transformada), este procedimiento se basa en lo visto en clase \parencite{tinoco2026pdi}, 
+    siguiendo esta metodología se lograron los resultados técnicos esperados de una imagen 
+    transformada con un buen tiempo de ejecución, esto al considerar que todo las operaciones 
+    pesadas son ejecutadas como multiplicación de matrices en NumPy y solamente existe un 
+    ciclo \textit{for} de Python para evaluar cada pixel de la imagen resultante.\\ 
