@@ -4,8 +4,7 @@
     algunos de los resultados más relevantes de las imágenes transformadas 
     destacando cómo son modificadas o alteradas con las transformaciones 
     consideradas. Para observar de mejor manera las imágenes, se sugiere 
-    referirse a la libreta de Jupyter (\href{https://github.com/alexisuaguilaru/ProcDigImg/blob/main/Proy03/proyecto.ipynb}{proyecto.ipynb}) 
-    que cumple también con el propósito de mostrar una bitácora de experimentos.
+    referirse a la libreta de Jupyter (\href{https://github.com/alexisuaguilaru/ProcDigImg/blob/main/Proy03/proyecto.ipynb}{proyecto.ipynb}).
 
     \subsection{Imagen 1 (Rotación)}
         En una de las imágenes donde más se puede apreciar la rotación es en 
@@ -67,13 +66,14 @@
 
         Por como se implementó el escalamiento, las entradas del algoritmo está 
         invertidas respectos a los ejes de la imagen y que se generan esos ``recortes'' 
-        debido a que la ``caja de imagen'' sigue siendo fija.
+        debido a que la ``caja de la imagen'' sigue siendo fija.
 
     \subsection{Imagen 5 (Transformación Afín)}
         La parte fundamental de las transformaciones afines es componerlas con 
         otras con el propósito de rescatar o mejorar ciertos detalles o elementos 
         presentes en una imagen. Para ilustrar este fenómeno, se presentan algunas 
-        composiciones de transformaciones afines:
+        composiciones de transformaciones afines en las cuales resulta más evidente 
+        la perdida de información por los parches negros:
 
         \begin{figure}[H]
             \centering
@@ -90,8 +90,8 @@
             \begin{tabular}{c | p{9cm}}
                 \textbf{Transformación afín} & \textbf{Parámetros} \\ \hline
                 1 & Sin transformación afín \\ \hline
-                2 & Rotación de $-36°$, escalamiento de $1.5$ en eje X y cizallamiento de $0.5$ sobre el eje Y. \\ \hline
+                2 & Rotación de $-36^\circ$, escalamiento de $1.5$ en eje X y cizallamiento de $0.5$ sobre el eje Y. \\ \hline
                 3 & Traslación de $135$ sobre eje X, reflexión respecto al eje X y escalamiento de $0.5$ en eje X.\\ \hline
-                4 & Rotación de $45°$, escalamiento de $1.2$ en eje Y y cizallamiento de $1$ sobre el eje X.\\ \hline
+                4 & Rotación de $45^\circ$, escalamiento de $1.2$ en eje Y y cizallamiento de $1$ sobre el eje X.\\ \hline
             \end{tabular}
         \end{table}

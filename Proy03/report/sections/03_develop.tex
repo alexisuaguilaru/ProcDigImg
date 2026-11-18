@@ -2,11 +2,11 @@
     Las implementaciones de las transformaciones afines se realizaron en NumPy \parencite{numpy_library}, 
     las cuales fueron verificadas de forma visual sobre el conjunto de imágenes empleado 
     para este proyecto. Esta verificación permitió mejorar la implementación de forma progresiva 
-    para ajustarlas al resultado de la transformación esperada de forma individual, principalmente central el 
+    para ajustarlas al resultado de la transformación esperada de forma individual, principalmente centrando el 
     efecto de la imagen respecto a su origen. De esta verificación se determinó calcular primero 
     la matriz de la transformación afín resultante de aplicar varias transformaciones de forma 
     consecutiva con el fin de generar un mejor resultado con una menor pérdida de información por 
-    una transformación incompleta.\\
+    una transformación incompleta o a pasos.\\
 
     Para aplicar correctamente la transformada afín, se empleó de la transformada inversa 
     junto con la interpolación bilineal para estimar la intensidad del color en el pixel 
