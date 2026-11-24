@@ -1,2 +1,26 @@
 \section{Conclusiones}
-    
+    Realizar este proyecto me permitió profundizar acerca de los beneficios prácticos 
+    de la FFT, como la reducción del costo computacional y filtrado de ruido senoidal, 
+    pero también sobre algunas de las limitaciones que tienen los filtros de recorte 
+    basados en el de Butterworth en ciertos escenarios. Lo relevante de este proyecto 
+    se encuentra en que si queremos aplicar un filtro de convolución a una imagen 
+    muy grande, lo más conveniente sería aplicarlo en el espacio de frecuencias debido 
+    a que se resume en una multiplicación matricial, este cambio operacional reduce 
+    drásticamente el costo computacional cuando se aplica el mismo filtro sobre miles 
+    de imágenes, esto en el caso del entrenamiento de una CNN.\\
+
+    Existen muchos tipos diferentes de ruido con una diversidad de fuentes, algunos de 
+    estos ruidos se pueden mitigar con las técnicas vistas previamente y más si 
+    son localizados, puntuales o posibles de suavizar. Pero qué ocurre cuando el ruido 
+    está presente de forma uniforme sobre toda la imagen, como estática o en senoidales, 
+    para eliminarlo requerimos usar de otras técnicas que permitan observarlo como 
+    si fuera un punto aislado o diferente, de aquí que usar la FFT nos genere esta 
+    representación que estamos buscando, y esto se apoya de los resultados obtenidos 
+    de forma experimental donde cada destello raro tiene el potencial de ser parte 
+    del ruido senoidal presente en las imágenes.\\ 
+
+    Por lo anterior, se tiene que probar y experimentar con diferentes filtros para lograr 
+    el efecto deseado en la imagen resultante, en algunos casos usar los de recorte 
+    de Butterworth no son los más convenientes debido a su efecto puntual. Como se mostró 
+    en algunas de las imágenes, el ruido también puede aparecer como líneas rectas entonces 
+    ahí se requiere de otros tipos de filtros que actúen sobre estos elementos o geometrías. 
