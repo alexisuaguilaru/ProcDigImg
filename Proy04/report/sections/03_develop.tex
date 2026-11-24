@@ -2,16 +2,15 @@
     Se hace uso de la implementación en NumPy \parencite{numpy_library} de la 
     Transformada Rápida de Fourier (FFT) para generar el dominio de frecuencias 
     de cada una de las imágenes además de aplicarles el centrado del espectro. 
-    Para determinar de mejor manera qué filtros de recortes serían lo más 
+    Para determinar de mejor manera qué filtros de recorte serían lo más 
     convenientes en cada caso, se visualizaron las frecuencias para delimitar 
     las frecuencias dominantes o que introducían ruido periódico a las imágenes, 
-    es decir, los puntos brillantes o destellos en la visualización de las 
-    frecuencias.\\
+    es decir, los puntos brillantes o destellos en la visualización.\\
 
     El filtro de Butterworth rechaza banda (BBRF) se implementó siguiendo tanto 
     las notas como el código proporcionado en clase \parencite{tinoco2026pdi}, el 
     cual se modificó ligeramente para evitar divisiones entre cero. Para crear 
-    el filtro de recorte únicamente se compusieron los filtros de Butterworth para 
+    el filtro de recorte únicamente se compusieron los filtros de Butterworth con 
     diferente parámetros (centros, ancho de banda y orden), donde esta composición 
     es una multiplicación punto a punto de matrices que representan los filtros. \\
 
